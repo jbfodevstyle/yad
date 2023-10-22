@@ -7,25 +7,46 @@
     <title>Bot Status</title>
     <link rel="stylesheet" href="35DS45FCF9.css">
     <style>
-        .status-button.green {
+        .status-button {
             background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
         }
 
-        .status-button.yellow {
-            background-color: #f39c12;
+        .status-button:hover {
+            background-color: #27ae60;
         }
 
-        .status-button.red {
-            background-color: #e74c3c;
+        .status-button[data-description]::after {
+            content: attr(data-description);
+            display: block;
+            font-size: 12px;
+            margin-top: 5px;
         }
     </style>
 </head>
 
 <body>
     <div class="status-buttons-container">
-        <button class="status-button green">Online</button>
-        <button class="status-button yellow">Idle</button>
-        <button class="status-button red">Offline</button>
+        <?php
+        // US Buttons
+        for ($i = 1; $i <= 20; $i++) {
+            echo '<button class="status-button" data-description="US_' . $i . ' - Description goes here">US_' . $i . '</button>';
+        }
+
+        // UK Buttons
+        for ($i = 1; $i <= 20; $i++) {
+            echo '<button class="status-button" data-description="UK_' . $i . ' - Description goes here">UK_' . $i . '</button>';
+        }
+
+        // AUS Buttons
+        for ($i = 1; $i <= 10; $i++) {
+            echo '<button class="status-button" data-description="AUS_' . $i . ' - Description goes here">AUS_' . $i . '</button>';
+        }
+        ?>
     </div>
 </body>
 
