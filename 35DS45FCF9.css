@@ -1,71 +1,40 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9ca24;
-    margin: 0;
-    padding: 0;
-}
+/* 35DS45FCF9.css */
 
-.spreadsheet-container {
+.status-buttons-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.spreadsheet {
-    width: 80%;
-    border-collapse: collapse;
-    margin: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.spreadsheet th,
-.spreadsheet td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.spreadsheet th {
-    background-color: #ffcc00;
-}
-
-.spreadsheet tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.spreadsheet tbody tr:hover {
-    background-color: #ffeaa7;
-}
 .status-button {
-    border: none;
     padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
 }
 
-.status-button.good {
+.green {
     background-color: #27ae60; /* Green */
-    color: #fff;
 }
 
-.status-button.slow {
+.yellow {
     background-color: #f39c12; /* Yellow */
-    color: #fff;
 }
 
-.status-button.bad {
+.red {
     background-color: #e74c3c; /* Red */
-    color: #fff;
 }
 
 .status-button:hover {
     opacity: 0.8;
+    transition: opacity 0.2s;
 }
 
-.status-button[data-description]::after {
+.status-button[data-description]:after {
     content: attr(data-description);
     display: block;
     font-size: 12px;
