@@ -35,16 +35,48 @@
             background-color: #45a049;
         }
 
-        .status-info {
-            margin-top: 20px;
+        .popup {
             display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
         }
 
-        label {
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
             font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
+
+<body>
+    <div>
+        Spreadsheet Line: Your Spreadsheet Link Goes Here
+    </div>
 
 <body>
     <div class="status-buttons-container">
@@ -109,23 +141,33 @@
         <div class="status-button green" data-description="Status: Good" data-server="AUS_19">AUS_19</div>
         <div class="status-button green" data-description="Status: Good" data-server="AUS_20">AUS_20</div>
     </div>
+    </div>
 
-    <div class="status-info" id="status-info">
-        <label for="ping">Ping:</label>
-        <span id="ping"></span><br>
-        <label for="latency">Latency:</label>
-        <span id="latency"></span>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="close">&times;</span>
+            <h2>Server Status Details</h2>
+            <div id="status-info">
+                <label for="ping">Ping:</label>
+                <span id="ping"></span><br>
+                <label for="latency">Latency:</label>
+                <span id="latency"></span>
+            </div>
+        </div>
     </div>
 
     <script>
         const statusButtons = document.querySelectorAll('.status-button');
-        const statusInfo = document.getElementById('status-info');
+        const popup = document.getElementById('popup');
+        const closeBtn = document.getElementById('close');
         const pingSpan = document.getElementById('ping');
         const latencySpan = document.getElementById('latency');
+
         const serverData = {
             US_1: { ping: 20, latency: 5 },
             US_2: { ping: 30, latency: 8 },
         };
+
         statusButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const serverName = button.getAttribute('data-server');
@@ -135,8 +177,14 @@
 
                 pingSpan.textContent = pingValue;
                 latencySpan.textContent = latencyValue;
-                statusInfo.style.display = 'block';
+
+                // Show the popup
+                popup.style.display = 'block';
             });
+        });
+
+        closeBtn.addEventListener('click', function () {
+            popup.style.display = 'none';
         });
     </script>
 </body>
