@@ -5,77 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bot Status</title>
-    <link rel="stylesheet" href="35DS45FCF9.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .status-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .status-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .status-button:hover {
+            background-color: #45a049;
+        }
+
         .status-info {
             margin-top: 20px;
             display: none;
+        }
+
+        label {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
     <div class="status-buttons-container">
-        <div class="status-button green" data-description="Status: Good" data-server="US_1">US_1</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_2">US_2</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_3">US_3</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_4">US_4</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_5">US_5</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_6">US_6</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_7">US_7</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_8">US_8</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_9">US_9</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_10">US_10</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_11">US_11</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_12">US_12</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_13">US_13</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_14">US_14</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_15">US_15</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_16">US_16</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_17">US_17</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_18">US_18</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_19">US_19</div>
-        <div class="status-button green" data-description="Status: Good" data-server="US_20">US_20</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_1">UK_1</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_2">UK_2</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_3">UK_3</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_4">UK_4</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_5">UK_5</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_6">UK_6</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_7">UK_7</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_8">UK_8</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_9">UK_9</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_10">UK_10</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_11">UK_11</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_12">UK_12</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_13">UK_13</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_14">UK_14</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_15">UK_15</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_16">UK_16</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_17">UK_17</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_18">UK_18</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_19">UK_19</div>
-        <div class="status-button green" data-description="Status: Good" data-server="UK_20">UK_20</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_1">AUS_1</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_2">AUS_2</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_3">AUS_3</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_4">AUS_4</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_5">AUS_5</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_6">AUS_6</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_7">AUS_7</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_8">AUS_8</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_9">AUS_9</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_10">AUS_10</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_11">AUS_11</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_12">AUS_12</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_13">AUS_13</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_14">AUS_14</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_15">AUS_15</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_16">AUS_16</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_17">AUS_17</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_18">AUS_18</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_19">AUS_19</div>
-        <div class="status-button green" data-description="Status: Good" data-server="AUS_20">AUS_20</div>
+        <!-- Status buttons dynamically created with server names -->
+        <div class="status-button" data-description="Status: Good" data-server="US_1">US_1</div>
+        <div class="status-button" data-description="Status: Good" data-server="US_2">US_2</div>
+        <div class="status-button" data-description="Status: Good" data-server="US_3">US_3</div>
+        <!-- Add more status buttons here -->
     </div>
 
     <div class="status-info" id="status-info">
@@ -90,17 +67,17 @@
         const statusInfo = document.getElementById('status-info');
         const pingSpan = document.getElementById('ping');
         const latencySpan = document.getElementById('latency');
-
         const serverData = {
             US_1: { ping: 20, latency: 5 },
             US_2: { ping: 30, latency: 8 },
         };
-
         statusButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const serverName = button.getAttribute('data-server');
+
                 const pingValue = serverData[serverName].ping;
                 const latencyValue = serverData[serverName].latency;
+
                 pingSpan.textContent = pingValue;
                 latencySpan.textContent = latencyValue;
                 statusInfo.style.display = 'block';
