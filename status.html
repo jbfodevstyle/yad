@@ -6,47 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bot Status</title>
     <link rel="stylesheet" href="35DS45FCF9.css">
-    <style>
-        .status-button {
-            background-color: #2ecc71;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
-
-        .status-button:hover {
-            background-color: #27ae60;
-        }
-
-        .status-button[data-description]::after {
-            content: attr(data-description);
-            display: block;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-    </style>
 </head>
 
 <body>
     <div class="status-buttons-container">
-        <?php
-        // US Buttons
-        for ($i = 1; $i <= 20; $i++) {
-            echo '<button class="status-button" data-description="US_' . $i . ' - Description goes here">US_' . $i . '</button>';
-        }
 
-        // UK Buttons
-        for ($i = 1; $i <= 20; $i++) {
-            echo '<button class="status-button" data-description="UK_' . $i . ' - Description goes here">UK_' . $i . '</button>';
-        }
+        <button class="status-button us good" data-description="US_1 - Good Status">US_1</button>
+        <button class="status-button us slow" data-description="US_2 - Slow Status">US_2</button>
 
-        // AUS Buttons
-        for ($i = 1; $i <= 10; $i++) {
-            echo '<button class="status-button" data-description="AUS_' . $i . ' - Description goes here">AUS_' . $i . '</button>';
-        }
-        ?>
+        <button class="status-button uk bad" data-description="UK_1 - Bad Status">UK_1</button>
+        <button class="status-button uk good" data-description="UK_2 - Good Status">UK_2</button>
+
+        <button class="status-button aus slow" data-description="AUS_1 - Slow Status">AUS_1</button>
+        <button class="status-button aus bad" data-description="AUS_2 - Bad Status">AUS_2</button>
     </div>
 </body>
 
