@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .user-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Discord Bot Dashboard</h1>
+        <% if (user) { %>
+            <div class="user-info">
+                <img src="<%= user.avatarURL %>" alt="User Avatar" style="border-radius: 50%; width: 100px; height: 100px;">
+                <h2>Hello, <%= user.username %>#<%= user.discriminator %></h2>
+                <a href="/dashboard">Go to Dashboard</a>
+            </div>
+        <% } else { %>
+            <a href="/auth/discord"><img src="https://discord.com/assets/28174a34e77bb5e5310ced9f95cb480b.png" alt="Login with Discord"></a>
+        <% } %>
+    </div>
+</body>
+
+</html>
