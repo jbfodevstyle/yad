@@ -74,37 +74,29 @@ app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
     </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        .container {
-            margin: 0 auto;
-            max-width: 400px;
-        }
-
-        .user-info {
-            margin-top: 20px;
-        }
-    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="1362SDCVADRFCSAD67.css"> 
 </head>
 
 <body>
     <div class="container">
-        <h1>Welcome to Discord Bot Dashboard</h1>
-        <% if (user) { %>
-            <div class="user-info">
-                <img src="<%= user.avatarURL %>" alt="User Avatar" style="border-radius: 50%; width: 100px; height: 100px;">
-                <h2>Hello, <%= user.username %>#<%= user.discriminator %></h2>
-                <a href="/dashboard">Go to Dashboard</a>
-            </div>
-        <% } else { %>
-            <a href="https://discord.com/oauth2/authorize?client_id=1165399076297248778&redirect_uri=https%3A%2F%2Fjbfodevstyle.github.io%2Fyad%2Fdashboard&response_type=code&scope=identify%20guilds.join%20guilds"><img src="https://discord.com/assets/28174a34e77bb5e5310ced9f95cb480b.png" alt="Login with Discord"></a>
-        <% } %>
+        <h1>Dashboard</h1>
+        <h2>Hello, <%= user.username %>#<%= user.discriminator %></h2>
+        <h3>Your Servers:</h3>
+        <ul>
+            <% guilds.forEach(guild => { %>
+                <li><%= guild.name %></li>
+            <% }); %>
+        </ul>
+        <a href="/logout">Logout</a>
     </div>
 </body>
 
 </html>
+
