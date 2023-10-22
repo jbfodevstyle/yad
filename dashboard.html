@@ -5,6 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord Bot Dashboard</title>
+    <script>
+        const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
+const DiscordStrategy = require('passport-discord').Strategy;
+const ejs = require('ejs');
+const { Client } = require('discord.js');
+
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views'); 
+
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((obj, done) => done(null, obj));
+
+passport.use(new DiscordStrategy({
+  clientID: '1165399076297248778',
+  clientSecret: 'b25c6e594518ed9be23f9aafeed97224b1180266938722e8a7a6ea8ddd14f1fa',
+  callbackURL: 'https://discord.com/oauth2/authorize?client_id=1165399076297248778&redirect_uri=https%3A%2F%2Fjbfodevstyle.github.io%2Fyad%2Fdashboard&response_type=code&scope=identify%20guilds.join%20guilds', 
+}, (accessToken, refreshToken, profile, done) => {
+  return done(null, profile);
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/', (req, res) => {
+  res.render('index', { user: req.user });
+});
+
+app.get('/auth/discord', passport.authenticate('discord'));
+
+app.get('/auth/discord/callback', passport.authenticate('discord', {
+  failureRedirect: '/'
+}), (req, res) => {
+  res.redirect('/dashboard');
+});
+
+app.get('/dashboard', (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+
+  res.render('dashboard', { user: req.user });
+});
+
+// Logout route
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
