@@ -38,3 +38,36 @@ body {
 .spreadsheet tbody tr:hover {
     background-color: #ffeaa7;
 }
+.status-button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.status-button.good {
+    background-color: #27ae60; /* Green */
+    color: #fff;
+}
+
+.status-button.slow {
+    background-color: #f39c12; /* Yellow */
+    color: #fff;
+}
+
+.status-button.bad {
+    background-color: #e74c3c; /* Red */
+    color: #fff;
+}
+
+.status-button:hover {
+    opacity: 0.8;
+}
+
+.status-button[data-description]::after {
+    content: attr(data-description);
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
