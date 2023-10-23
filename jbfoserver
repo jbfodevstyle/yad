@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="serverstyle.css">
+    <title>Yad Server</title>
+</head>
+<h2> support Jbfoo000 By clicking the link bellow <h2>
+<body>
+    <div class="button-container">
+        <a class="fancy-button" href="https://discord.gg/CrGkd74frJ" target="_blank">Join Yad Discord</a>
+    </div>
+</body>
+</html>
