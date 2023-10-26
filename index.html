@@ -9,19 +9,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #FFFFCC; /* Yellow background */
+            background-image: radial-gradient(circle, #FFD700 1%, #FFD700 1%, #FFFFCC 90%); /* Polka dot pattern */
         }
 
         .taskbar {
-            background-color: #333;
-            color: white;
+            background-color: #000;
+            color: #FFD700; /* Yellow text */
             padding: 10px;
             text-align: center;
         }
 
         .button {
-            background-color: #4CAF50;
+            background-color: #000;
             border: none;
-            color: white;
+            color: #FFD700; /* Yellow text */
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -32,7 +34,19 @@
         }
 
         .button.invite {
-            background-color: #008CBA;
+            background-color: #FF0000; /* Red button */
+        }
+
+        .button.discord {
+            background-color: #7289DA; /* Discord color */
+        }
+
+        .button.gold {
+            background-color: #FFD700; /* Gold color */
+        }
+
+        .button.status {
+            background-color: #4CAF50; /* Green button */
         }
     </style>
 </head>
@@ -40,25 +54,15 @@
 <body>
     <div class="taskbar">
         Yad!
-        <button class="button">Invite</button>
-        <button class="button">Discord</button>
-        <button class="button">Gold</button>
-        <button class="button">Status</button>
+        <a href="/invite" class="button invite">Invite</a>
+        <a href="/server" class="button discord">Discord</a>
+        <a href="/gold" class="button gold">Gold</a>
+        <a href="/status" class="button status">Status</a>
     </div>
 
     <h1>Welcome to Yad Bot!</h1>
-    <button class="button invite" onclick="addToServer()">Add to Server</button>
-    <button class="button" onclick="showHelp()">Help</button>
-
-    <script>
-        function addToServer() {
-            alert('Adding to server...');
-        }
-
-        function showHelp() {
-            alert('Yad Bot Help: This bot can perform various tasks. Explore the features!');
-        }
-    </script>
+    <a href="/invite" class="button invite">Add to Server</a>
+    <a href="/invite" class="button invite">Help</a>
 </body>
 
 </html>
