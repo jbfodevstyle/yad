@@ -142,6 +142,38 @@
                 alert("Oops! Some answers are incorrect. Please review your answers and try again.");
             }
         }
+        function checkCredentials() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username.toLowerCase() === "username" && password.toLowerCase() === "password") {
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("assessmentScreen").classList.add("hidden");
+
+        // Generate random letters and string values
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var randomString = '';
+        for (var i = 0; i < 100; i++) {
+            randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+        // Display the random string in a div
+        var randomDiv = document.createElement("div");
+        randomDiv.innerText = randomString;
+        document.body.appendChild(randomDiv);
+    } else if (username === "9A8GV78S69B5" && password === "FC8V9A") {
+        document.getElementById("usernamePlaceholder").innerText = "Test1";
+        showAssessmentScreen();
+    } else if (username === "785421235784" && password === "1FCFV8") {
+        document.getElementById("usernamePlaceholder").innerText = "JamesA";
+        showAssessmentScreen();
+    } else if (username === "1" && password === "1") {
+        document.getElementById("usernamePlaceholder").innerText = "K9pRjLm2sN7oD8qF5zGhE6yUwX4vVtHxAvUvAgV";
+        showAssessmentScreen();
+    } else {
+        alert("Invalid credentials. Please try again.");
+    }
+}
     </script>
 </body>
 
