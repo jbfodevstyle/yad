@@ -14,13 +14,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #2C3E50;
+            background-color: #3498DB;
             color: white;
             text-align: center;
         }
 
         .container {
-            background-color: #3498DB;
+            background-color: #2C3E50;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px 0px #000000;
@@ -30,127 +30,113 @@
             display: none;
         }
 
-        .section {
+        .input-group {
             margin-bottom: 20px;
         }
 
-        .question {
+        label {
+            font-size: 18px;
             margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #BDC3C7;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
 
         .btn {
             padding: 10px 20px;
-            background-color: #2ECC71;
+            background-color: #27AE60;
             color: white;
             border: none;
             cursor: pointer;
-            margin-top: 20px;
             border-radius: 5px;
         }
 
         .btn:hover {
-            background-color: #27AE60;
+            background-color: #21935B;
         }
 
-        #username {
-            font-weight: bold;
+        .question {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container" id="codeScreen">
-        <h1>Enter Code:</h1>
-        <input type="text" id="accessCode">
-        <button class="btn" onclick="checkCode()">Submit</button>
+    <div class="container" id="loginScreen">
+        <h1>Enter Credentials:</h1>
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+        </div>
+        <button class="btn" onclick="checkCredentials()">Submit</button>
     </div>
 
     <div class="container hidden" id="assessmentScreen">
-        <div class="section">
-            <h2>Section 1: Algebra</h2>
-            <div class="question">
-                <p>1. Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
-                <input type="text" id="q1answer">
-            </div>
-            <div class="question">
-                <p>2. Factor the quadratic expression: x^2 - 9x + 20.</p>
-                <input type="text" id="q2answer">
-            </div>
+        <div class="question">
+            <h2>Question 1:</h2>
+            <p>Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
+            <input type="text" id="q1answer">
         </div>
-
-        <div class="section">
-            <h2>Section 2: Geometry</h2>
-            <div class="question">
-                <p>1. Hello, <span id="username"></span>! Find the area of a triangle with base 8 cm and height 10 cm.</p>
-                <input type="text" id="q3answer">
-            </div>
-            <div class="question">
-                <p>2. Calculate the circumference of a circle with radius 5 units.</p>
-                <input type="text" id="q4answer">
-            </div>
+        <div class="question">
+            <h2>Question 2:</h2>
+            <p>Factor the quadratic expression: x^2 - 9x + 20.</p>
+            <input type="text" id="q2answer">
         </div>
-
-        <button class="btn" onclick="nextQuestion()">Next Question</button>
+        <div class="question">
+            <h2>Question 3:</h2>
+            <p>Hello, <span id="usernamePlaceholder"></span>! Find the area of a triangle with base 8 cm and height 10 cm.</p>
+            <input type="text" id="q3answer">
+        </div>
+        <div class="question">
+            <h2>Question 4:</h2>
+            <p>Calculate the circumference of a circle with radius 5 units.</p>
+            <input type="text" id="q4answer">
+        </div>
+        <button class="btn" onclick="checkAnswers()">Submit Answers</button>
     </div>
 
     <script>
-        var currentQuestion = 1;
-        var correctAnswers = {
-            q1: "10",
-            q2: "(x - 5)(x - 4)",
-            q3: "40",
-            q4: "31.42"
-        };
-
-        function checkCode() {
-            var accessCode = document.getElementById("accessCode").value;
-            if (accessCode === "3915") {
-                document.getElementById("username").innerText = "Test1";
+        function checkCredentials() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username === "Test1" && password === "12345") {
+                document.getElementById("usernamePlaceholder").innerText = "Test1";
                 showAssessmentScreen();
-            } else if (accessCode === "3956") {
-                document.getElementById("username").innerText = "James A";
+            } else if (username === "JamesA" && password === "67890") {
+                document.getElementById("usernamePlaceholder").innerText = "JamesA";
                 showAssessmentScreen();
             } else {
-                alert("Invalid code. Please try again.");
+                alert("Invalid credentials. Please try again.");
             }
         }
 
         function showAssessmentScreen() {
-            document.getElementById("codeScreen").classList.add("hidden");
+            document.getElementById("loginScreen").classList.add("hidden");
             document.getElementById("assessmentScreen").classList.remove("hidden");
-            updateQuestion();
         }
 
-        function updateQuestion() {
-            var questionNumber = "q" + currentQuestion + "x";
-            document.getElementById(questionNumber).innerText = "x";
+        function checkAnswers() {
+            var q1answer = document.getElementById("q1answer").value.trim();
+            var q2answer = document.getElementById("q2answer").value.trim();
+            var q3answer = document.getElementById("q3answer").value.trim();
+            var q4answer = document.getElementById("q4answer").value.trim();
 
-            var answerField = "q" + currentQuestion + "answer";
-            document.getElementById(answerField).value = "";
-
-            if (currentQuestion === 1 || currentQuestion === 2) {
-                document.getElementById(questionNumber).innerText = "x + 5";
-            }
-
-            if (currentQuestion === 3 || currentQuestion === 4) {
-                document.getElementById(questionNumber).innerText = "Hello, " + document.getElementById("username").innerText + "!";
-            }
-        }
-
-        function nextQuestion() {
-            var answerField = "q" + currentQuestion + "answer";
-            var userAnswer = document.getElementById(answerField).value.trim();
-
-            if (userAnswer === correctAnswers["q" + currentQuestion]) {
-                alert("Correct! Move to the next question.");
-                currentQuestion++;
-                updateQuestion();
+            if (q1answer === "10" && q2answer === "(x - 5)(x - 4)" && q3answer === "40" && q4answer === "31.42") {
+                alert("Congratulations! You have answered all questions correctly.");
             } else {
-                alert("Incorrect answer. Please try again.");
-            }
-
-            if (currentQuestion > 4) {
-                alert("Congratulations! You have completed the assessment.");
+                alert("Oops! Some answers are incorrect. Please review your answers and try again.");
             }
         }
     </script>
