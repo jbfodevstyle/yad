@@ -8,10 +8,26 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #3498DB;
             padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000000;
+        }
+
+        .hidden {
+            display: none;
         }
 
         .section {
@@ -24,90 +40,117 @@
 
         .btn {
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #2ECC71;
             color: white;
             border: none;
             cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
         }
 
         .btn:hover {
-            background-color: #45a049;
+            background-color: #27AE60;
+        }
+
+        #username {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <div class="section">
-        <h2>Section 1: Algebra</h2>
-        <div class="question">
-            <p>1. Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
-            <input type="text" id="q1answer">
-        </div>
-        <div class="question">
-            <p>2. Factor the quadratic expression: x^2 - 9x + 20.</p>
-            <input type="text" id="q2answer">
-        </div>
-        <div class="question">
-            <p>3. Simplify the expression: (2x^2 - 3x + 5) - (x^2 + 2x - 1).</p>
-            <input type="text" id="q3answer">
-        </div>
-        <div class="question">
-            <p>4. Solve for <span id="q4x"></span>: 3(x - 4) = 21.</p>
-            <input type="text" id="q4answer">
-        </div>
-        <div class="question">
-            <p>5. Find the solution set for the equation: 4x^2 - 16 = 0.</p>
-            <input type="text" id="q5answer">
-        </div>
+    <div class="container" id="codeScreen">
+        <h1>Enter Code:</h1>
+        <input type="text" id="accessCode">
+        <button class="btn" onclick="checkCode()">Submit</button>
     </div>
 
-    <div class="section">
-        <h2>Section 2: Geometry</h2>
-        <div class="question">
-            <p>1. Find the area of a triangle with base 8 cm and height 10 cm.</p>
-            <input type="text" id="q6answer">
+    <div class="container hidden" id="assessmentScreen">
+        <div class="section">
+            <h2>Section 1: Algebra</h2>
+            <div class="question">
+                <p>1. Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
+                <input type="text" id="q1answer">
+            </div>
+            <div class="question">
+                <p>2. Factor the quadratic expression: x^2 - 9x + 20.</p>
+                <input type="text" id="q2answer">
+            </div>
         </div>
-        <div class="question">
-            <p>2. Calculate the circumference of a circle with radius 5 units.</p>
-            <input type="text" id="q7answer">
-        </div>
-        <div class="question">
-            <p>3. Determine the volume of a rectangular prism with length 6 cm, width 4 cm, and height 3 cm.</p>
-            <input type="text" id="q8answer">
-        </div>
-        <div class="question">
-            <p>4. Find the midpoint of the line segment with endpoints A(3, 7) and B(9, 11).</p>
-            <input type="text" id="q9answer">
-        </div>
-        <div class="question">
-            <p>5. If sin(θ) = 3/5, find cos(θ).</p>
-            <input type="text" id="q10answer">
-        </div>
-    </div>
 
-    <button class="btn" onclick="nextQuestion()">Next Question</button>
+        <div class="section">
+            <h2>Section 2: Geometry</h2>
+            <div class="question">
+                <p>1. Hello, <span id="username"></span>! Find the area of a triangle with base 8 cm and height 10 cm.</p>
+                <input type="text" id="q3answer">
+            </div>
+            <div class="question">
+                <p>2. Calculate the circumference of a circle with radius 5 units.</p>
+                <input type="text" id="q4answer">
+            </div>
+        </div>
+
+        <button class="btn" onclick="nextQuestion()">Next Question</button>
+    </div>
 
     <script>
-        let currentQuestion = 1;
+        var currentQuestion = 1;
+        var correctAnswers = {
+            q1: "10",
+            q2: "(x - 5)(x - 4)",
+            q3: "40",
+            q4: "31.42"
+        };
 
-        function nextQuestion() {
-            if (currentQuestion < 10) {
-                currentQuestion++;
-                updateQuestion();
+        function checkCode() {
+            var accessCode = document.getElementById("accessCode").value;
+            if (accessCode === "3915") {
+                document.getElementById("username").innerText = "Test1";
+                showAssessmentScreen();
+            } else if (accessCode === "3956") {
+                document.getElementById("username").innerText = "James A";
+                showAssessmentScreen();
             } else {
-                alert("You have reached the last question. Thank you for completing the assessment!");
+                alert("Invalid code. Please try again.");
             }
         }
 
+        function showAssessmentScreen() {
+            document.getElementById("codeScreen").classList.add("hidden");
+            document.getElementById("assessmentScreen").classList.remove("hidden");
+            updateQuestion();
+        }
+
         function updateQuestion() {
-            let questionElement = document.getElementById(`q${currentQuestion}x`);
-            if (questionElement) {
-                questionElement.innerHTML = `<input type="text" id="q${currentQuestion}xAnswer">`;
+            var questionNumber = "q" + currentQuestion + "x";
+            document.getElementById(questionNumber).innerText = "x";
+
+            var answerField = "q" + currentQuestion + "answer";
+            document.getElementById(answerField).value = "";
+
+            if (currentQuestion === 1 || currentQuestion === 2) {
+                document.getElementById(questionNumber).innerText = "x + 5";
             }
 
-            let answerElement = document.getElementById(`q${currentQuestion}answer`);
-            if (answerElement) {
-                answerElement.disabled = false;
+            if (currentQuestion === 3 || currentQuestion === 4) {
+                document.getElementById(questionNumber).innerText = "Hello, " + document.getElementById("username").innerText + "!";
+            }
+        }
+
+        function nextQuestion() {
+            var answerField = "q" + currentQuestion + "answer";
+            var userAnswer = document.getElementById(answerField).value.trim();
+
+            if (userAnswer === correctAnswers["q" + currentQuestion]) {
+                alert("Correct! Move to the next question.");
+                currentQuestion++;
+                updateQuestion();
+            } else {
+                alert("Incorrect answer. Please try again.");
+            }
+
+            if (currentQuestion > 4) {
+                alert("Congratulations! You have completed the assessment.");
             }
         }
     </script>
