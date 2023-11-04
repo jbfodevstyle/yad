@@ -89,6 +89,123 @@
             <p>Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
             <input type="text" id="q1answer">
         </div>
+          <div class="container hidden" id="teacherScreen">
+        <h1>Welcome, Teacher!</h1>
+        <!-- Teacher-specific content and functionality can be added here -->
+    </div>
+        <div class="question">
+            <h2>Question 2:</h2>
+            <p>Factor the quadratic expression: x^2 - 9x + 20.</p>
+            <input type="text" id="q2answer">
+        </div>
+        <div class="question">
+            <h2>Question 3:</h2>
+            <p>Hello, <span id="usernamePlaceholder"></span>! Find the area of a triangle with base 8 cm and height 10 cm.</p>
+            <input type="text" id="q3answer">
+        </div>
+        <div class="question">
+            <h2>Question 4:</h2>
+            <p>Calculate the circumference of a circle with radius 5 units.</p>
+            <input type="text" id="q4answer">
+        </div>
+        <button class="btn" onclick="checkAnswers()">Submit Answers</button>
+    </div>
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10th Grade Math Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #3498DB;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #2C3E50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #BDC3C7;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #27AE60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #21935B;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="loginScreen">
+        <h1>Enter Credentials:</h1>
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+        </div>
+        <button class="btn" onclick="checkCredentials()">Submit</button>
+    </div>
+
+    <div class="container hidden" id="assessmentScreen">
+        <div class="question">
+            <h2>Question 1:</h2>
+            <p>Solve for <span id="q1x"></span>: 2x - 5 = 15.</p>
+            <input type="text" id="q1answer">
+        </div>
+          <div class="container hidden" id="teacherScreen">
+        <h1>Welcome, Teacher!</h1>
+        <!-- Teacher-specific content and functionality can be added here -->
+    </div>
         <div class="question">
             <h2>Question 2:</h2>
             <p>Factor the quadratic expression: x^2 - 9x + 20.</p>
@@ -157,7 +274,6 @@
             randomString += characters.charAt(Math.floor(Math.random() * characters.length));
         }
 
-        // Display the random string in a div
         var randomDiv = document.createElement("div");
         randomDiv.innerText = randomString;
         document.body.appendChild(randomDiv);
@@ -174,7 +290,42 @@
         alert("Invalid credentials. Please try again.");
     }
 }
+            function checkCredentials() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "ATest50" && password === "20") {
+                showTeacherScreen();
+            } else if (username === "9A8GV78S69B5" && password === "FC8V9A") {
+                document.getElementById("usernamePlaceholder").innerText = "Test1";
+                showAssessmentScreen();
+            } else if (username === "785421235784" && password === "1FCFV8") {
+                document.getElementById("usernamePlaceholder").innerText = "JamesA";
+                showAssessmentScreen();
+            } else if (username === "1" && password === "1") {
+                document.getElementById("usernamePlaceholder").innerText = "K9pRjLm2sN7oD8qF5zGhE6yUwX4vVtHxAvUvAgV";
+                showAssessmentScreen();
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+
+        function showTeacherScreen() {
+            document.getElementById("loginScreen").classList.add("hidden");
+            document.getElementById("assessmentScreen").classList.add("hidden");
+            document.getElementById("teacherScreen").classList.remove("hidden");
+        }
+
+        function showAssessmentScreen() {
+            document.getElementById("loginScreen").classList.add("hidden");
+            document.getElementById("teacherScreen").classList.add("hidden");
+            document.getElementById("assessmentScreen").classList.remove("hidden");
+        }
     </script>
+</body>
+
+</html>
+
 </body>
 
 </html>
